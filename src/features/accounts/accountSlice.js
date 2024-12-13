@@ -66,8 +66,6 @@ export function deposit(amount, currency){
     }
 }
 
-console.log(accountSlice)
-
 export default accountSlice.reducer;
 
 export const { withdraw, requestLoan, payLoan } = accountSlice.actions;

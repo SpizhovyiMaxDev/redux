@@ -12,7 +12,7 @@ function AccountOperations() {
 
   const {
     loan: currentLoanAmount, 
-    
+    isConvertingCurrency
   } = useSelector(store => store.account);
   
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ function AccountOperations() {
             <option value="GBP">British Pound</option>
           </select>
 
-          <button onClick={handleDeposit}>Deposit {depositAmount}</button>
+          <button onClick={handleDeposit} disabled={isConvertingCurrency}>{isConvertingCurrency ? "Converting..." : `Deposit ${depositAmount}`}</button>
         </div>
 
         <div>
