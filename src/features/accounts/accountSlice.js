@@ -13,7 +13,7 @@ const accountSlice = createSlice({
     initialState,
     reducers:{
         deposit(state, action){
-            state.balance += action.payload.amount;
+            state.balance += action.payload;
             state.isConvertingCurrency = false;
         },
 
