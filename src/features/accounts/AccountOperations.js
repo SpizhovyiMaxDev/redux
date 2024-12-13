@@ -12,6 +12,7 @@ function AccountOperations() {
 
   const {
     loan: currentLoanAmount, 
+    
   } = useSelector(store => store.account);
   
   const dispatch = useDispatch();
