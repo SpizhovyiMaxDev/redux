@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 
+import { accountSlice } from "./features/accounts/accountSlice";
 
-const store = combineReducers({
+export const store = combineReducers({
     reducer:{
-        account: accountReducer,
-        customer: customerReducer,
+        account: accountSlice,
+        // customer: customerReducer,
     }
 });
