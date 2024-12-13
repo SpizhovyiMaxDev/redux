@@ -4,6 +4,7 @@ const initialState = {
     balance: 0,
     loan: 0,
     loanPurpose: "",
+    isConvertingCurrency: false,
 }
 
 
@@ -12,7 +13,8 @@ const accountSlice = createSlice({
     initialState,
     reducers:{
         deposit(state, action){
-            state.balance += action.payload;
+            state.balance += action.payload.amount;
+            state.isConvertingCurrency = false;
         },
 
         withdraw(state, action){
@@ -36,11 +38,34 @@ const accountSlice = createSlice({
             state.loanPurpose = "";
             state.balance -= state.loan;
             state.loan = 0;
+        },
+        
+        convertingCurrency(state){
+            state.isConvertingCurrency = true;
         }
     }
 });
 
+export function deposit(amount, currency){
+    if(currency === "USD"){
+        return { type: "account/deposit", payload: amount }
+    }
+    
+    return async function (dispatch, getState){
+       dispatch({ type:"account/convertingCurrency" });
+       const response = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`);
+
+       if(!response.ok) 
+            throw new Error("The server failed converting the currency."); 
+
+       const data = await response.json();
+       const converted = data.rates.USD;
+       console.log(converted)
+
+       dispatch({ type: "account/deposit", payload: converted });
+    }
+}
 
 export default accountSlice.reducer;
 
-export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+export const { withdraw, requestLoan, payLoan } = accountSlice.actions;
