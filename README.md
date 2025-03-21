@@ -1,6 +1,4 @@
-# Old way of using redux practices
-
-## Instruction for the instalations
+# Old way of using redux practices (learning purposes)
 
 Install redux library
 ```bash
