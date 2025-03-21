@@ -30,7 +30,7 @@ npm i redux-devtools-extension
 ```
 <br>
 
-After Instalation, use function to apply those developer tools - use function
+After Instalation, use function to apply those developer tools we just wrap injected middleware int o a function
 ```bash
 composeWithDevTools(applyMiddleware(thunk))
 ```
