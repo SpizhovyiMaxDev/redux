@@ -1,7 +1,11 @@
 # Redux toolkit
 
-## Instruction for the instalations
+```bash
+ npm i @reduxjs/toolkit
+```
+<br>
 
-- **Install Redux Toolkit (it will include redux)** - npm i @reduxjs/toolkit
-
-- **Install this package to "establish the connection" between react and redux** - npm i react-redux
+Install this package to "establish the connection" between react and redux
+```bash
+ npm i react-redux
+```
