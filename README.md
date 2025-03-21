@@ -1,5 +1,6 @@
 # Redux toolkit
 
+Install redux toolkit library
 ```bash
  npm i @reduxjs/toolkit
 ```
